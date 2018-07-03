@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Todo程序-事件委托</title>
+        <!-- 注意这里因为todo.css里面存在对pure.css的引用，所以必须先引用pure.css! -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
         <link rel="stylesheet" href="../static/css/todo.css">
     </head>
     <body>
@@ -10,7 +12,7 @@
             <!-- todo 输入框 -->
             <div class="todo-form">
                 <input id="id-input-todo" type="text" name="" value="">
-                <button id="id-button-add" type="button" name="button">添加</button>
+                <button class="pure-button" id="id-button-add" type="button" name="button">添加</button>
             </div>
             <!-- todo列表 -->
             <div id="id-div-container">

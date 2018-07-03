@@ -31,10 +31,10 @@ var insertTodo = function(todo) {
 var templateTodo = function(todo) {
     var t = `
         <div class='todo-cell'>
-            <button class='todo-edit'>编辑</button>
-            <button class='todo-done'>完成</button>
-            <button class='todo-delete'>删除</button>
-            <span contenteditable='true'>${todo.task}</span>
+            <button class='todo-edit pure-button pure-button-primary'>编辑</button>
+            <button class='todo-done button-success pure-button'>完成</button>
+            <button class='todo-delete button-warning pure-button'>删除</button>
+            <span class='todo-span' contenteditable='true'>${todo.task}</span>
             <span>${todo.time}</span>
         </div>
     `
