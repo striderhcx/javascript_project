@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue todo lists</title>
+        <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <link rel="stylesheet" href="./todo.css">
+    </head>
+    <body>
+        <div id="id-div-todo">
+            <div class="">
+                <input  v-model="inputValue"  type="text" name="" value="">
+                <button  v-on:click="handleSubmit" class="button-secondary" type="submit" name="button">提交</button>
+            </div>
+            <div id="id-div-todocontainer">
+                <!-- 父组件通过属性content向子组件todo-item传递值item(vue中父组件通过属性向子组件进行值的传递) -->
+                <!-- 父组件可以通过v-on:xxxxx监听子组件todo-item触发的delete事件 -->
+                <todo-item v-bind:class="todoComplete" v-for="(item, index) of list" :key="index" :content="item" :index="index" v-on:delete="handleDelete" v-on:complete="handleComplete"></todo-item>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        // 定义全局组件, vue中的每一个组件都是一个vue实例，一个完整的vue项目是由多个vue实例组成的，每个vue实例都可以定义属性，方法等。
+        Vue.component('todo-item', {
+            props: ['content', 'index',], //给组件todo-item传值"content",然后在模板中才可以使用。
+            template: '<div class="todo-cell" v-bind:class="todoComplete"><span class="todo-span">{{content}}</span><button class="button-warning" id="id-button-delete" v-on:click="handleClick">删除</button> <button  class="button-success" id="id-button-complete" v-on:click="handleComplete">完成</button></div>', // 给每条todo绑定一个click事件
+            data: function() {
+                return {
+                    todoComplete: '',
+                }
+            },
+            methods: {
+                handleClick: function() {
+                    this.$emit('delete', this.index)  //子组件同过发布订阅模式向父组件传递数据.click事件会向父组件传递一个delete事件，并且传递一个当前todo的下标作为参数
+                },
+                handleComplete: function() {
+                    this.$emit('complete', this.index)
+                    this.todoComplete = 'todo-complete'
+                },
+            }
+        })
+
+        // 定义局部组件
+        // var TodoItem = {
+        //     template: '<li>{{content}}</li>'
+        // }
+        new Vue({
+            el: '#id-div-todo',
+            // components: {   //局部组件必须在vue实例里声明
+            //     'todo-item': TodoItem,
+            // },
+            data: {
+                inputValue: '',
+                list: [],
+                todoComplete: '',
+            },
+            methods: {
+                // 保存todolist到localStorage
+                saveTodos: function(todoLists) {
+                    var s = JSON.stringify(todoLists)
+                    window.localStorage.todoList = s
+                },
+                // 从 localStorage中加载todo list
+                loadTodos: function() {
+                    var s = window.localStorage.todoList
+                    return JSON.parse(s)
+                },
+
+                // 提交按钮点击后把todo放到list中，由于是双向绑定，所以todo也会出现在页面中
+                handleSubmit: function() {
+                    this.list.push(this.inputValue)
+                    this.inputValue = ''
+                    this.$options.methods.saveTodos(this.list)
+                },
+                // 删除list里面的数据，由于是双向绑定，所以对应index的todo也会在页面中被删除
+                handleDelete: function(index) {
+                    this.list.splice(index, 1)
+                    this.$options.methods.saveTodos(this.list)
+                },
+                // 标记完成todo, 这里保存一下todo的状态（暂时没做)
+                handleComplete: function(index) {
+                    console.log('handleComplete')
+                },
+            },
+        created: function() {  //可以在created的时候初始化todolists
+            console.log('created!')
+            this.list = this.loadTodos()
+        }
+        })
+        </script>
+    </body>
+</html>
