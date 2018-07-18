@@ -1,0 +1,18 @@
+.gua-center {
+    text-align: center;
+}
+
+.gua-center-block {
+    margin: 0 auto;
+}
+
+.gua-block {
+    display: block;
+    width: 700px;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 700px;
+}

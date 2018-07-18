@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建博客</title>
+</head>
+<body>
+        {# 渲染模板的时候应该传一个blog id进来，不然无法 知道评论属于哪个blog #}
+        <div class="gua-center-block gua-block" id="id-blog-cell" data-id={{ blog_id }}>
+            <h1 id="id-blog-title" class="gua-center"></h1>
+            {#  markdown 以后添加 #}
+            <div id="id-blog-content" class="markdown-body"></div>
+        </div>
+        <div class="gua-center">
+            <textarea id="id-input-content" name="content" placeholder="正文"></textarea>
+            <br>
+            <button id="id-button-add" class="pure-button pure-button-primary">发表评论</button>
+            <br>
+        </div>
+        <table class="gua-center-block pure-table pure-table-striped">
+            <thead>
+                <tr>
+                    <th>content</th>
+                    <th>Updated Time</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="id-comment-list" >
+
+            </tbody>
+        </table>
+</body>
+    <link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='markdown.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='blog.css') }}" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+    <script src='{{ url_for('static', filename='base.js') }}'></script>
+    <script src='{{ url_for('static', filename='blog_detail.js') }}'></script>
+    <script src='{{ url_for('static', filename='comment.js') }}'></script>
+</html>

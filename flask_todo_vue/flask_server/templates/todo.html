@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ajax flask todo with css</title>
+    </head>
+    <body>
+        <h1 class="gua-center">ajax flask todo with css</h1>
+        <div class="gua-center pure-form">
+            <input id='id-input-todo'>
+            <button id='id-button-add' class="pure-button pure-button-primary">添加</button>
+        </div>
+        <table class="gua-center-block pure-table pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Content</th>
+                    <th>Updated Time</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody id="id-todo-list" >
+
+            </tbody>
+        </table>
+        <!-- 这是处理静态文件的套路 -->
+        <!-- base.js 放了公共的函数 -->
+        <!-- 按顺序引入 2 个 js 文件, 后面的 js 文件就能使用前面的文件中的函数了 -->
+        <link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
+        <script src='{{ url_for('static', filename='base.js') }}'></script>
+        <script src='{{ url_for('static', filename='todo.js') }}'></script>
+    </body>
+</html>

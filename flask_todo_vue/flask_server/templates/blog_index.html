@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog</title>
+</head>
+<body>
+    <h1 class="gua-center">blog首页</h1>
+    <div class="gua-center">
+        <a href="{{ url_for('blog.new') }}" class="pure-button pure-button-primary">新建</a>
+    </div>
+            <table class="gua-center-block pure-table pure-table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Updated Time</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="id-blog-list" >
+
+            </tbody>
+        </table>
+
+</body>
+<link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+<link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
+<script src='{{ url_for('static', filename='base.js') }}'></script>
+<script src='{{ url_for('static', filename='blog_index.js') }}'></script>
+</html>

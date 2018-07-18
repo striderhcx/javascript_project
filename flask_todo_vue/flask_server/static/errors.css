@@ -1,0 +1,51 @@
+body {
+	background: rgb(239, 242, 245); font: 16px/1.7 "Helvetica Neue", Helvetica, Arial, Sans-serif; margin: 0px; color: rgb(34, 34, 34); font-size-adjust: none; font-stretch: normal;
+}
+img {
+	border: currentColor; border-image: none;
+}
+a {
+	color: rgb(16, 92, 182); text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.error {
+	margin: 169px auto 0px; width: 404px;
+}
+.error-wide {
+	width: 500px;
+}
+@media all and (max-width:500px)
+{
+.error {
+	width: 98%;
+}
+}
+.error .header {
+	margin: 0px 0px 0.33em 0.33em; line-height: 1.2; overflow: hidden; font-size: 1.8em;
+}
+.error .header img {
+	vertical-align: text-bottom;
+}
+.error .header .mute {
+	color: rgb(153, 153, 153); font-size: 0.5em;
+}
+.error hr {
+	margin: 1.3em 0px;
+}
+.error p {
+	margin: 0px 0px 1.7em; color: rgb(153, 153, 153);
+}
+.error p:last-child {
+	margin-bottom: 0px;
+}
+.error strong {
+	color: rgb(0, 0, 0); font-size: 1.1em;
+}
+.error .content {
+	background: rgb(247, 247, 247); padding: 2em 1.25em; border-radius: 5px; border: 1px solid rgb(186, 187, 188); border-image: none; text-align: center;
+}
+.error .content .single {
+	margin: 3em 0px; color: rgb(102, 102, 102); font-size: 1.1em;
+}

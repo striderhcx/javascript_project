@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog new</title>
+</head>
+<body>
+    <h1 class="gua-center">blog</h1>
+    <div class="gua-center pure-form">
+        <input id="id-input-title" name="title" placeholder="标题">
+        <br>
+        <textarea id="id-input-content" name="content" placeholder="正文"></textarea>
+        <br>
+        <button id="id-button-add" class="pure-button pure-button-primary">发表</button>
+    <div/>
+</body>
+<link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+<link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet">
+<script src='{{ url_for('static', filename='base.js') }}'></script>
+<script src='{{ url_for('static', filename='blog_new.js') }}'></script>
+</html>

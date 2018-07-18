@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 {{username}}</h2>
+    <form action="{{ url_for('user_api.login') }}" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button class="pure-button pure-button-primary" type="submit">登录</button>
+    </form>
+    <h3>{{result}}</h3>
+</body>
+<link href="https://cdn.bootcss.com/pure/1.0.0/pure-min.css" rel="stylesheet">
+</html>
